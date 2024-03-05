@@ -1,0 +1,378 @@
+/* Box sizing rules */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Reset default button styles */
+button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  line-height: inherit;
+}
+
+/* Remove all animations, transitions, and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Theme 1 */
+:root {
+  --bg-main: hsl(222, 26%, 31%);
+  --bg-toggle: hsl(223, 31%, 20%);
+  --bg-screen: hsl(224, 36%, 15%);
+  --key-toggle-equal: hsl(6, 63%, 50%);
+  --key-toggle-equal-hover: hsl(7, 93%, 66%);
+  --key-toggle-equal-shadow: hsl(6, 70%, 34%);
+  --key-reset-delete: hsl(225, 21%, 49%);
+  --key-reset-delete-hover: hsl(224, 51%, 76%);
+  --key-reset-delete-shadow: hsl(224, 28%, 35%);
+  --key-num-operator: hsl(30, 25%, 89%);
+  --key-num-operator-hover: hsl(0, 0%, 100%);
+  --key-num-operator-shadow: hsl(28, 16%, 65%);
+  --text-white: hsl(0, 0%, 100%);
+  --text-body: hsl(0, 0%, 100%);
+  --text-num: hsl(221, 14%, 31%);
+}
+
+/* Theme 2 */
+:root.theme2 {
+  --bg-main: hsl(0, 0%, 90%);
+  --bg-toggle: hsl(0, 5%, 81%);
+  --bg-screen: hsl(0, 0%, 93%);
+  --key-toggle-equal: hsl(25, 98%, 40%);
+  --key-toggle-equal-hover: hsl(25, 100%, 60%);
+  --key-toggle-equal-shadow: hsl(25, 99%, 27%);
+  --key-reset-delete: hsl(185, 42%, 37%);
+  --key-reset-delete-hover: hsl(185, 41%, 56%);
+  --key-reset-delete-shadow: hsl(185, 58%, 25%);
+  --key-num-operator: hsl(45, 7%, 89%);
+  --key-num-operator-hover: hsl(0, 0%, 100%);
+  --key-num-operator-shadow: hsl(35, 11%, 61%);
+  --text-body: hsl(60, 10%, 19%);
+  --text-num: hsl(60, 10%, 19%);
+}
+
+/* Theme 3 */
+:root.theme3 {
+  --bg-main: hsl(268, 75%, 9%);
+  --bg-toggle: hsl(268, 71%, 12%);
+  --bg-screen: hsl(268, 71%, 12%);
+  --key-toggle-equal: hsl(176, 100%, 44%);
+  --key-toggle-equal-hover: hsl(176, 89%, 75%);
+  --key-toggle-equal-shadow: hsl(177, 92%, 70%);
+  --key-reset-delete: hsl(281, 89%, 26%);
+  --key-reset-delete-hover: hsl(280, 56%, 44%);
+  --key-reset-delete-shadow: hsl(285, 91%, 52%);
+  --key-num-operator: hsl(268, 47%, 21%);
+  --key-num-operator-hover: hsl(267, 54%, 44%);
+  --key-num-operator-shadow: hsl(290, 70%, 36%);
+  --text-body: hsl(52, 100%, 62%);
+  --text-num: hsl(52, 100%, 62%);
+}
+
+body {
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+
+  background: var(--bg-main);
+  color: var(--text-body);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  user-select: none;
+
+  transition: background 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.calculator {
+  width: 100%;
+  max-width: 588px;
+
+  padding: 24px;
+}
+
+.calc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+
+  margin-bottom: 32px;
+}
+
+.logo {
+  letter-spacing: -0.01em;
+}
+
+.theme-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: end;
+}
+
+.theme-number {
+  display: flex;
+  gap: 16px;
+  padding: 0 6px;
+}
+
+.theme-number span {
+  font-size: 16px;
+}
+
+.theme-container {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.theme-container span {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.theme-options {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+
+  width: 70px;
+
+  border-radius: 12px;
+
+  background: var(--bg-toggle);
+
+  transition: background 300ms ease-in-out;
+}
+
+.theme-btn {
+  width: 18px;
+  height: 18px;
+
+  border-radius: 100%;
+
+  background: var(--key-toggle-equal);
+
+  transition: transform 300ms ease-in-out, background 300ms ease-in-out;
+}
+
+.theme-btn:hover {
+  background: var(--key-toggle-equal-hover);
+}
+
+.display {
+  background: var(--bg-screen);
+
+  border-radius: 12px;
+  padding: 36px 32px 32px;
+  margin-bottom: 24px;
+
+  transition: background 300ms ease-in-out;
+}
+
+.result {
+  color: var(--text-body);
+
+  text-align: right;
+  font-size: 56px;
+  letter-spacing: -0.015em;
+
+  width: 100%;
+
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0;
+
+  cursor: auto;
+}
+
+.keypad-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 28px 24px;
+
+  background: var(--bg-toggle);
+  border-radius: 12px;
+  padding: 32px;
+
+  transition: background 300ms ease-in-out;
+}
+
+.keypad {
+  display: flex;
+  gap: 24px;
+}
+
+.keypad-container button {
+  border-radius: 10px;
+
+  transition: background 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.num-btn,
+.operator-btn {
+  width: 100%;
+  padding: 10px 0;
+  background: var(--key-num-operator);
+
+  font-size: 40px;
+  letter-spacing: -0.02em;
+
+  color: var(--text-num);
+
+  box-shadow: 0px 5px 0px 0px var(--key-num-operator-shadow);
+}
+
+.num-btn:hover,
+.operator-btn:hover {
+  background: var(--key-num-operator-hover);
+}
+
+.reset-btn {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.equal-btn {
+  grid-column-start: 3;
+  grid-column-end: 5;
+
+  font-size: 40px;
+
+  background: var(--key-toggle-equal);
+  color: var(--text-white);
+
+  box-shadow: 0px 5px 0px 0px var(--key-toggle-equal-shadow);
+}
+
+.equal-btn:hover {
+  background: var(--key-toggle-equal-hover);
+}
+
+.reset-btn,
+.delete-btn {
+  font-size: 28px;
+
+  background: var(--key-reset-delete);
+  color: var(--text-white);
+
+  box-shadow: 0px 5px 0px 0px var(--key-reset-delete-shadow);
+}
+
+.keypad-container button:active {
+  transform: translateY(5px);
+  box-shadow: 0px 0px 0px 0px var(--key-reset-delete-shadow);
+
+  transition: transform 100ms ease-in, box-shadow 100ms ease-in;
+}
+
+.reset-btn:hover,
+.delete-btn:hover {
+  background: var(--key-reset-delete-hover);
+}
+
+@media only screen and (max-width: 480px) {
+  .display {
+    padding: 24px;
+  }
+
+  .result {
+    font-size: 40px;
+  }
+
+  .keypad-container {
+    gap: 16px 12px;
+  }
+
+  .num-btn,
+  .equal-btn {
+    font-size: 32px;
+    padding: 14px 0;
+  }
+
+  .reset-btn,
+  .delete-btn {
+    font-size: 20px;
+  }
+}
