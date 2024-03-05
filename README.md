@@ -13,8 +13,8 @@ Users should be able to:
 
 # Links
 
-- Solution URL:
-- Live Site URL:
+- Solution URL: https://github.com/markhadi/calculator-app-main
+- Live Site URL: https://markhadi.github.io/calculator-app-main/
 
 # Author
 
